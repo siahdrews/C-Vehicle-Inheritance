@@ -122,6 +122,31 @@ public:
     }
 
     // TODO: Create getters and setters
+    std::string name()
+    {
+        return m_name;
+    }
+
+    int speed()
+    {
+        return m_speed;
+    }
+
+    int max_speed()
+    {
+        return m_max_speed;
+    }
+
+    void name(std::string name)
+    {
+        m_name = name;
+    }
+
+    void speed(int speed)
+    {
+        m_speed = speed;
+    }
+
 };
 
 // TODO: Derived class 1
