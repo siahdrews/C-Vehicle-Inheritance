@@ -23,7 +23,7 @@ public:
     bool still_running = true;
     // public member functions
     // parameter based constructor
-    Vehicle(std::string name, int max_speed, int speed)
+    Vehicle(std::string name, int speed, int max_speed)
     {
         m_name = name;
         m_max_speed = max_speed;
@@ -361,9 +361,19 @@ int main()
     Boulder myBoulder(tempname, 0, tempspeed);
 
     // infinite loop until user exits
-    while(myBoulder.still_running == true){
+    while(myBoulder.still_running){
         myBoulder.show_options();
     }
 
-    
+    // get inputs for second derived class
+    std::cout << "Enter name: ";
+    std::cin >> tempname;
+    std::cout << "Enter Max speed: ";
+    std::cin >> tempspeed;
+
+    // create object of first derived class
+    Airplane myAirplane(tempname, 0, tempspeed);
+    while(myAirplane.still_running){
+        myAirplane.show_options();
+    }
 }
