@@ -17,7 +17,7 @@ protected:
     std::string m_name;    // Name of vehicle
     int m_speed;           // current speed of vehicle
     bool m_moving = false; // is the vehicle moving or not
-        int m_max_speed; // maximum speed of vehicle
+    int m_max_speed; // maximum speed of vehicle
 
 public:
     bool still_running = true;
@@ -99,38 +99,10 @@ public:
     }
 
     virtual void print_title() = 0;
-    void print_title(){
-        std::cout << "+---------------------------------+" << std::endl;
-        std::cout << "|     Standard Vehicle Title      |"<< std::endl;
-        std::cout << "+---------------------------------+" << std::endl;
-    }
+
 
     virtual void show_options() = 0;
-    void show_options(){
-        char a;     // get input from user
-        std::cout << "(T)ake off | (A)ccelerate | (D)ecelerate | (S)top | E(x)it >>";
-        std::cin >> a;
-        
-        if(a=='t'){
-            takeoff();
-        } else if (a=='a')
-        {
-            accelerate();
-        } else if (a=='d')
-        {
-            decelerate();
-        } else if (a=='s')
-        {
-            stop_vehicle();
-        } else if (a=='x')
-        {
-            exit();
-        }
-        
-        
-        
-        
-    }
+
 
     // TODO: Create getters and setters
     std::string name()
@@ -372,5 +344,26 @@ class Airplane : public Vehicle{
             fall_off();
         }
     }
-
 };
+
+int main()
+{
+    std::string tempname;
+    int tempspeed;
+
+    // get inputs for first derived class
+    std::cout << "Enter name: ";
+    std::cin >> tempname;
+    std::cout << "Enter Max speed: ";
+    std::cin >> tempspeed;
+
+    // create object of first derived class
+    Boulder myBoulder(tempname, 0, tempspeed);
+
+    // infinite loop until user exits
+    while(myBoulder.still_running == true){
+        myBoulder.show_options();
+    }
+
+    
+}
